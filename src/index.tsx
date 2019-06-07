@@ -16,8 +16,8 @@ type AppStateType = {
 };
 
 class App extends React.Component<{}, AppStateType> {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super({});
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,11 +30,16 @@ class App extends React.Component<{}, AppStateType> {
     };
   }
 
-  handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+  handleChange(event:any) {
+	  const name: "name" | "comment" = event.target.name;
+  if ( name == "name") {
+    this.setState({ "name": event.target.value });
+  } else if (name == "comment") {
+    this.setState({ "comment": event.target.value });
+  }
   }
 
-  handleSubmit(event) {
+  handleSubmit(event:any) {
     console.log("A name was submitted: ", this.state);
 
     fetch(
@@ -109,7 +114,7 @@ class App extends React.Component<{}, AppStateType> {
       {
         Header: "ID",
         id: "id",
-        accessor: d => (isNaN(d.id) ? d.id : Number(d.id))
+        accessor: (d: any) => (isNaN(d.id) ? d.id : Number(d.id))
       },
       {
         Header: "Název",
