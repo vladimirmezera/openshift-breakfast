@@ -18,7 +18,7 @@
     "typescript": "3.3.3"
   },
   "scripts": {
-    "start": "serve -s build",
+    "start": "serve -s build -l 8080",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
