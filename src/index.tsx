@@ -77,7 +77,7 @@ class App extends React.Component<{}, AppStateType> {
   }
 
   loadData() {
-    fetch(`${process.env.REACT_APP_COMMENT_SERVICE_URL}/rest/comments`, {
+    fetch(`${process.env.REACT_APP_COMMENT_SERVICE_URL}`, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
