@@ -30,34 +30,31 @@ class App extends React.Component<{}, AppStateType> {
     };
   }
 
-  handleChange(event:any) {
-	  const name: "name" | "comment" = event.target.name;
-  if ( name == "name") {
-    this.setState({ "name": event.target.value });
-  } else if (name == "comment") {
-    this.setState({ "comment": event.target.value });
-  }
+  handleChange(event: any) {
+    const name: "name" | "comment" = event.target.name;
+    if (name == "name") {
+      this.setState({ name: event.target.value });
+    } else if (name == "comment") {
+      this.setState({ comment: event.target.value });
+    }
   }
 
-  handleSubmit(event:any) {
+  handleSubmit(event: any) {
     console.log("A name was submitted: ", this.state);
 
-    fetch(
-      "https://comment-service-dev-breakfest.1d35.starter-us-east-1.openshiftapps.com/rest/comments",
-      {
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
-        },
-        method: "POST",
-        body: JSON.stringify({
-          id: this.state.data.length + 1,
-          comment: this.state.comment,
-          name: this.state.name
-        })
-      }
-    )
+    fetch(`${process.env.REACT_APP_COMMENT_SERVICE_URL}/rest/comments`, {
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+      method: "POST",
+      body: JSON.stringify({
+        id: this.state.data.length + 1,
+        comment: this.state.comment,
+        name: this.state.name
+      })
+    })
       .then(function(response) {
         return response.json();
       })
@@ -80,16 +77,13 @@ class App extends React.Component<{}, AppStateType> {
   }
 
   loadData() {
-    fetch(
-      "https://comment-service-dev-breakfest.1d35.starter-us-east-1.openshiftapps.com/rest/comments",
-      {
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
-        }
+    fetch(`${process.env.REACT_APP_COMMENT_SERVICE_URL}/rest/comments`, {
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       }
-    )
+    })
       .then(function(response) {
         return response.json();
       })
@@ -127,6 +121,11 @@ class App extends React.Component<{}, AppStateType> {
     ];
 
     console.log(this.state);
+    console.log("ENV", process.env);
+    console.log(
+      "VLADA'S ENV",
+      `${process.env.REACT_APP_COMMENT_SERVICE_URL}/rest/comments`
+    );
     return (
       <div className="App">
         <div
