@@ -9,6 +9,12 @@ import LogoOpenshift from "./img/LogoOpenShift.png";
 import "react-table/react-table.css";
 import "./styles.css";
 
+declare global {
+  interface Window {
+    COMMENT_SERVICE_URL: any;
+  }
+}
+
 type AppStateType = {
   name: string;
   comment: string;
@@ -42,7 +48,7 @@ class App extends React.Component<{}, AppStateType> {
   handleSubmit(event: any) {
     console.log("A name was submitted: ", this.state);
 
-    fetch(`${process.env.REACT_APP_COMMENT_SERVICE_URL}/rest/comments`, {
+    fetch(`${window.COMMENT_SERVICE_URL}/rest/comments`, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +83,7 @@ class App extends React.Component<{}, AppStateType> {
   }
 
   loadData() {
-    fetch(`${process.env.REACT_APP_COMMENT_SERVICE_URL}/rest/comments`, {
+    fetch(`${window.COMMENT_SERVICE_URL}/rest/comments`, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -121,11 +127,7 @@ class App extends React.Component<{}, AppStateType> {
     ];
 
     console.log(this.state);
-    console.log("ENV", process.env);
-    console.log(
-      "VLADA'S ENV",
-      `${process.env.REACT_APP_COMMENT_SERVICE_URL}/rest/comments`
-    );
+    console.log("VLADA'S ENV", `${window.COMMENT_SERVICE_URL}/rest/comments`);
     return (
       <div className="App">
         <div
