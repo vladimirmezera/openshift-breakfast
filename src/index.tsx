@@ -42,7 +42,7 @@ class App extends React.Component<{}, AppStateType> {
   handleSubmit(event: any) {
     console.log("A name was submitted: ", this.state);
 
-    fetch(`${process.env.REACT_APP_COMMENT_SERVICE_URL}/rest/comments`, {
+    fetch(`${process.env.REACT_APP_COMMENT_SERVICE_URL}`, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +77,7 @@ class App extends React.Component<{}, AppStateType> {
   }
 
   loadData() {
-    fetch(`${process.env.REACT_APP_COMMENT_SERVICE_URL}`, {
+    fetch(${process.env.REACT_APP_COMMENT_SERVICE_URL}, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -123,8 +123,7 @@ class App extends React.Component<{}, AppStateType> {
     console.log(this.state);
     console.log("ENV", process.env);
     console.log(
-      "VLADA'S ENV",
-      `${process.env.REACT_APP_COMMENT_SERVICE_URL}/rest/comments`
+      `${process.env.REACT_APP_COMMENT_SERVICE_URL}`
     );
     return (
       <div className="App">
