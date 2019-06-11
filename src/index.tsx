@@ -146,8 +146,8 @@ class App extends React.Component<{}, AppStateType> {
               alt="redhat"
             />
           </span>
-          <h1>OpenShift - metodika vývoje</h1>
-          <h3>Pravidla pro vývoj nad platformou OpenShift pro společnost XY</h3>
+          <h1>OpenShift - ukázková react aplikace</h1>
+          <h3>Ukázková react aplikace, která přes REST API získává data. Zároveň lze data posílat.</h3>
         </div>
         <div
           style={{
