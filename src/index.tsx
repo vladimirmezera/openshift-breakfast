@@ -127,7 +127,8 @@ class App extends React.Component<{}, AppStateType> {
     ];
 
     console.log(this.state);
-    console.log("VLADA'S ENV", `${window.COMMENT_SERVICE_URL}`);
+    console.log("Frontend's ENV", `${window.COMMENT_SERVICE_URL}`);
+
     return (
       <div className="App">
         <div
