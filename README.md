@@ -1,5 +1,5 @@
 
-# OpenShift breakfest
+# OpenShift breakfast
 UI demo for OpenShift workshop.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/OpenShift-LogoType.svg/200px-OpenShift-LogoType.svg.png)
